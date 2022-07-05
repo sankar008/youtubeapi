@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
-// app.use(express.urlencoded({extended: true}));
-// app.use(express.json());
+const multer = require('multer');
 const mongodb = require('./db');
 const userRouter = require('./v1/users/user.router');
 const youtubeRouter = require('./v1/youtube/youtube.router');
@@ -16,7 +15,8 @@ const httpsServer = https.createServer({
 	cert: fs.readFileSync('/etc/letsencrypt/live/pdf.webdevelopments.in/fullchain.pem'),
   }, app);
 
-
+const upload = multer();
+app.use(upload.none());
 app.use(cors());
 
 const bodyParser = require('body-parser')
@@ -26,6 +26,6 @@ app.use(bodyParser.urlencoded({ limit: '50000mb', extended: true }));
 app.use('/v1/user', userRouter);
 app.use('/v1/url', youtubeRouter);
 
-httpsServer.listen(3001, 'pdf.webdevelopments.in', () => {
+httpsServer.listen(3001, () => {
 	console.log("Server is running:", 3001);
 })

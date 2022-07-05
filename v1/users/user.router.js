@@ -5,7 +5,7 @@ const { getUser, createUser, updateUser, getUserById, sendOtp, forgotPassword, u
 router.get('/', getUser);
 router.post('/', createUser);
 router.get('/:id', getUserById);
-router.patch('/', updateUser);
+router.patch('/:id', updateUser);
 router.patch('/send-otp', sendOtp);
 router.patch('/reset-password', resetPassword);
 router.patch('/forgot-password', forgotPassword);

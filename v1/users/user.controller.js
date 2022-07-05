@@ -96,8 +96,10 @@ const updateUser = async(req, res) => {
     	const salt = genSaltSync(10);
     	body.password = hashSync(body.password, salt);
     }
+
+     
     try{
-        const user = await userModel.updateOne({_id:body._id}, {
+        const user = await userModel.updateOne({_id: req.params.id}, {
             firstName: body.firstName,
             lastName: body.lastName,
             email: body.email,            
