@@ -1,0 +1,5 @@
+db.js
+/node_modules
+/storage/*.key
+/.idea
+/.vscode
