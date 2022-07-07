@@ -269,6 +269,7 @@ const createPdf = async (req, res) => {
     const youtube = new youtubeModel({
         userId: body.userId,
         link: body.link,
+        title: body.title,
         image: dbpdfName
     })
 
